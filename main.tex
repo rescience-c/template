@@ -1,0 +1,350 @@
+%% ----------------------------------------------------------------------------
+%% ReScience article template
+%% Copyright (c) 2018 N.P. Rougier,
+%% Released under a Creative Commons Attribution 4.0 International license.
+%% ----------------------------------------------------------------------------
+%% Dependencies:
+%%  * metadata-draft.tex or metadata-final.tex (defined in \metadataFILE)
+%%  * header.tex
+%%  * content.tex
+%% ----------------------------------------------------------------------------
+\documentclass[a4paper, oneside, 10pt]{article}
+
+
+% ---- Encoding ---------------------------------------------------------------
+% \usepackage[utf8]{inputenc}
+
+
+% --- Langage -----------------------------------------------------------------
+\usepackage[american]{babel}
+
+
+% --- Various packages --------------------------------------------------------
+\usepackage{ifthen}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{marginnote}
+\usepackage{csquotes}
+
+
+% --- Mathematics -------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+% --- Page layout -------------------------------------------------------------
+\usepackage[a4paper]{geometry}
+\geometry{left=4.5cm, right=3cm, top=3cm, bottom=3.5cm,
+          heightrounded, headheight=12.1pt,
+          marginparwidth=3cm, marginparsep=0.75cm, footskip=2cm}
+\reversemarginpar
+
+
+% --- Font stack --------------------------------------------------------------
+
+%% PDFLaTeX
+%% \usepackage[light,condensed]{roboto} % Sans Serif
+%% \usepackage[default,light,semibold,tabular]{sourceserifpro} % Roman
+%% \usepackage[varqu]{zi4} % Monotype
+%% \makeatletter
+%% \def\bfseries@sf{sb}
+%% \makeatother
+
+% XeLaTeX
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+ \setmainfont{Source Serif Pro}[
+  UprightFont=Source Serif Pro Light,
+  ItalicFont = Source Serif Pro Light,
+  ItalicFeatures={FakeSlant=0.2},
+  BoldFont = Source Serif Pro,
+  BoldItalicFeatures={FakeSlant=0.2}
+]
+\setsansfont{Roboto Condensed}[
+  UprightFont = *-Light,
+  BoldFont = *-Regular
+]
+
+\setmonofont{Source Code Pro}[
+  UprightFont = *-Light,
+  BoldFont = *-Regular
+]
+
+\newfontfamily\RobotoCon{Roboto Condensed}[
+  UprightFont = *-Regular,
+  BoldFont = *-Bold
+]  
+
+\newfontfamily\Roboto{Roboto}[
+  UprightFont = *-Regular,
+  BoldFont = *-Black
+]  
+
+\newfontfamily\SpaceRoboto{Roboto}[
+  UprightFont = *-Regular,
+  BoldFont = *-Medium,
+  UprightFeatures={LetterSpace=35},
+  BoldFeatures={LetterSpace=35}
+]  
+
+
+\usepackage{microtype}
+
+
+
+% --- Colors ------------------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{darkred}{HTML}{CF232B}
+\definecolor{darkblue}{HTML}{2B23CF}
+\definecolor{darkgray}{HTML}{555555}
+\definecolor{lightgray}{HTML}{cccccc}
+\colorlet{citecolor}{black}
+\colorlet{linkcolor}{darkgray}
+\colorlet{urlcolor}{darkgray}
+
+
+% -- Section titles & ToC -----------------------------------------------------
+\usepackage{titlesec}
+%% \titleformat{\section}
+%%             {\Large\sffamily\bfseries}{\thesection}{0.25em}{}
+%% \titleformat{\subsection}
+%%             {\large\sffamily\bfseries}{\thesection}{0.25em}{}
+            
+\titleformat{\section}{\Large\sffamily\bfseries}
+            {\llap{{\textcolor{lightgray}{\normalfont\sffamily\thesection}}\hskip 0.5em}}{0em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}
+     {\llap{{\textcolor{lightgray}{\normalfont\sffamily\thesubsection}}\hskip 0.5em}}{0em}{}
+     
+\titleformat{\subsubsection}[runin]
+            {\normalfont\sffamily\bfseries}{}{0em}{}[\mbox{ --- }]
+\titlespacing{\subsubsection}
+             {0pt}                        % left
+             {3.25ex plus 1ex minus .2ex} % before
+             {0pt}                        % after
+
+
+%% \allsectionsfont{\normalfont\sffamily}
+
+
+% --- Captions ----------------------------------------------------------------
+\usepackage[labelsep=period]{caption}
+\renewcommand{\captionfont}{\small}
+\renewcommand{\captionlabelfont}{\small\sffamily\bfseries}
+%% \captionsetup[figure]{justification=justified, singlelinecheck=false}
+%% \captionsetup[table]{justification=justified, singlelinecheck=false}
+%% \captionsetup[listing]{justification=justified, singlelinecheck=false}
+
+
+% --- Hyperref & colors -------------------------------------------------------
+\usepackage[pdfusetitle,
+            bookmarks=true,
+            breaklinks=true,
+            pdfborder={0 0 0},
+            citecolor=citecolor,
+            linkcolor=linkcolor,
+            urlcolor=urlcolor,
+            colorlinks=true,
+            linktocpage=false,
+            hyperindex=true,
+            colorlinks=true,
+            linktocpage=false,
+            linkbordercolor=white]{hyperref}
+\urlstyle{sf}
+
+
+% --- Listings ----------------------------------------------------------------
+\usepackage{listings}
+\lstset{%
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{black},
+  commentstyle=\color{gray},
+  stringstyle=\color{black},
+  backgroundcolor=\color{white},
+  numbers=none,
+  numberstyle=\ttfamily,
+  stepnumber=2,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=none,
+  framerule=0.5pt,
+  tabsize=2,
+  rulesep=5em,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  framexleftmargin=0em,
+  xleftmargin=0em,
+  framexrightmargin=0em,
+  xrightmargin=0em,
+  aboveskip=0.5em,
+  belowskip=0.5em,
+}
+
+
+% --- Text Layout -------------------------------------------------------------
+% No indentation at beginning of a new paragraph
+\setlength\parindent{0pt}
+
+% No space between items in itemize and enuemrate lists
+\usepackage{enumitem}
+%\setlist[itemize]{noitemsep}
+%\setlist[enumerate]{noitemsep}
+
+\renewcommand*{\marginfont}{\scriptsize\sffamily}
+
+%\linespread{1.1}
+
+
+% --- Authors block -----------------------------------------------------------
+\usepackage{authblk,etoolbox}
+\makeatletter
+% patch \maketitle so that it doesn't center
+\patchcmd{\@maketitle}{center}{flushleft}{}{}
+\patchcmd{\@maketitle}{center}{flushleft}{}{}
+% patch \maketitle so that the font size for the title is normal
+\patchcmd{\@maketitle}{\LARGE}{\LARGE\sffamily\bfseries\vspace{-2.em}}{}{}
+% patch the patch by authblk so that the author block is flush left
+\def\maketitle{{%
+  \renewenvironment{tabular}[2][]
+    {\begin{flushleft}}
+    {\end{flushleft}}
+  \AB@maketitle}}
+\makeatother
+\setlength{\affilsep}{0.25em}
+\renewcommand\Affilfont{\normalfont\sffamily\footnotesize}
+\renewcommand\Authfont{\sffamily\bfseries\small}
+\renewcommand\Authands{\normalfont\sffamily\small}
+\makeatletter
+\renewcommand\AB@affilsepx{ -- \protect\Affilfont}
+\makeatother
+
+
+% --- Various convenient macros -----------------------------------------------
+\usepackage[many]{tcolorbox}
+\newtcbox{\iconbox}[1][]{%
+  enhanced,nobeforeafter,tcbox raise base, 
+  boxrule=0.4pt, top=0pt, bottom=-1pt,
+  right=.1pt, left=.1pt, arc=1pt, boxsep=1pt,
+  fontupper={\tiny \sffamily}, before upper={\vphantom{dlg}},
+  colframe=white, colback=black!10!white, coltext=black}
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\iconbox{ID}}}
+\newcommand{\doi}[1]{\href{http://doi.org/#1}{#1}}
+\newcommand{\github}[1]{\href{https://github.com/#1}{github.com/#1}}
+
+% See https://tex.stackexchange.com/questions/99316/symbol-for-external-links
+\newcommand{\ExternalLink}{%
+    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
+        \begin{scope}[x=1ex, y=1ex]
+            \clip (-0.1,-0.1) 
+                --++ (-0, 1.2) 
+                --++ (0.6, 0) 
+                --++ (0, -0.6) 
+                --++ (0.6, 0) 
+                --++ (0, -1);
+            \path[draw, 
+                line width = 0.5, 
+                rounded corners=0.5] 
+                (0,0) rectangle (1,1);
+        \end{scope}
+        \path[draw, line width = 0.5] (0.5, 0.5) 
+            -- (1, 1);
+        \path[draw, line width = 0.5] (0.6, 1) 
+            -- (1, 1) -- (1, 0.6);
+        }
+    }
+
+
+% --- Headers & footers -------------------------------------------------------
+\input{\metadataFILE}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancypagestyle{plain}{}
+\renewcommand{\headrulewidth}{0.0pt}
+\lhead{
+  \ifthenelse{\value{page}=1}{}
+             {\scriptsize \sffamily \articleTITLE}
+}
+\chead{}
+\rhead{\scriptsize \sffamily \bfseries
+  \ifdefempty{\articleDOI}{
+    % UNDER REVIEW
+    \fbox{UNDER REVIEW}
+    %\fcolorbox{lightgray}{lightgray}{\textcolor{white}{UNDER REVIEW}}
+  }
+}
+\renewcommand{\footrulewidth}{0.0pt}
+\lfoot{\scriptsize \sffamily
+  \href{https://rescience.github.io/}{\bfseries \textcolor{black}{\journalNAME}}
+    \ifdefempty{\journalVOLUME}{}{\journalVOLUME.\journalISSUE}
+     -- \authorsSHORT~\articleYEAR}
+\cfoot{}
+\rfoot{\scriptsize \sffamily \thepage}
+
+
+% --- Bibliography ------------------------------------------------------------
+\usepackage[
+  backend=biber,
+  style = numeric,
+  % style=authoryear,
+  sorting = none,
+  giveninits = true,
+  maxcitenames=3,
+  mincitenames=1,
+  maxbibnames=10,
+  isbn = false,
+  url = false,
+  doi = false,
+  autocite = superscript,
+  natbib = true]{biblatex}
+\usepackage{bibentry}
+\DeclareFieldFormat{labelnumberwidth}{#1\adddot}
+\renewcommand*{\bibfont}{\small \sffamily}
+\addbibresource{\articleBIBLIOGRAPHY}
+
+
+% --- Copyright statement -----------------------------------------------------
+\usepackage{float}
+\floatstyle{plain}
+\newfloat{statement}{b!}{sst}
+
+
+% --- PDF Information ---------------------------------------------------------
+\hypersetup{
+  pdfauthor={\authorsFULL},
+  pdftitle={\articleTITLE},
+  pdfkeywords={\articleKEYWORDS},
+  pdfsubject={\articleTYPE, \articleDOMAIN},
+  pdfcreator={ReScience C (rescience.github.io)},
+  %  pdfproducer={}
+}
+
+
+% --- Title -------------------------------------------------------------------
+\title{
+  {\normalfont \sffamily \normalsize \textcolor{darkred}
+    {
+      \ifdefempty{\articleDOMAIN}{
+        \articleTYPE\\
+      }{
+        \articleTYPE~/~\articleDOMAIN\\
+      }
+    }
+  }
+  \vspace{-.25em} \RobotoCon \articleTITLE
+}
+
+
+
+%% ============================================================================
+\begin{document}
+\input{header.tex}
+\input{content.tex}
+
+\hypersetup{linkcolor=black,urlcolor=darkgray}
+\renewcommand\emph[1]{{\bfseries #1}}
+\setlength\bibitemsep{0pt}
+\printbibliography
+
+\end{document}
+% =============================================================================
