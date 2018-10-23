@@ -7,7 +7,7 @@ PDF style. For the fonts, you'll need:
 
 * [Source Serif Pro (Adobe Systems)](https://github.com/adobe-fonts/source-serif-pro) by F. Grießhammer. 
 * [The Roboto family of fonts (Google)](https://github.com/google/roboto) by C. Robertson.
-* [Source Code Pro (Adobe Systems) by](https://github.com/adobe-fonts/source-code-pro) P. D. Hunt.
+* [Source Code Pro (Adobe Systems)](https://github.com/adobe-fonts/source-code-pro) by P.D. Hunt.
 
 A tool is available for the latex template that produces latex definitions from
 the metadata file. If you use another software, make sure that metadata and PDF
