@@ -16,7 +16,9 @@ are always synced.
 
 #### Usage
 
-For a submission, fill in [metadata-draft.yaml](./metadata-draft.yaml) and type:
+For a submission, fill in information in
+[metadata-draft.yaml](./metadata-draft.yaml), modify [content.tex](content.tex)
+and type:
 
 ```bash
 $ make draft
