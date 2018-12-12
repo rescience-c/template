@@ -38,11 +38,11 @@ mostly because of the complexity of the editing procedure. In order to make
 life easier for everyone, the submission process has been greatly simplified
 and authors are now responsible for getting a DOI for their code \& data and
 have only to submit a PDF (as a new issue instead of making a pull request) and
-metadata. The subsequent editing process has been largely automatize using a
+metadata. The subsequent editing process has been largely automatized using a
 set of dedicated Python scripts that should greatly simplify the
 publication. We will still archive the submission on Zenodo but this archive
-will be made for final PDF only. However, both the PDF and the Zenodo entry
-will contain all associated DOI (data and code).
+will be made for the final PDF only. However, both the PDF and the Zenodo entry
+will contain all associated DOIs (data and code).
 
 
 \subsubsection{A simplified publishing process}
@@ -50,15 +50,15 @@ will contain all associated DOI (data and code).
 We have have been using a combination of
 \href{https://daringfireball.net/projects/markdown/syntax}{markdown} and
 \href{http://pandoc.org/}{pandoc} for producing both the draft and the final
-version of all the published articles. This has worked reasonably well until it
-starts to cause all kind of problems for both authors and editors, especially
+version of all the published articles. This had worked reasonably well until it
+started to cause all kind of problems for both authors and editors, especially
 with the reference and citation plugins. Consequently, articles will be now
 submitted directly in PDF with accompanying metadata in a separate file using
 the \href{https://en.wikipedia.org/wiki/YAML}{YAML} format (they were
 previously embedded in the markdown file). Once an article has been accepted,
-authors will be responsible for updating the metadata and to rebuild the PDF if
-necessary. We could also consider to use the
-\href{https://github.com/openjournals/whedon}{Whedon} API that helps automazing
+authors will be responsible for updating the metadata and for rebuilding the PDF if
+necessary. We could also consider using the
+\href{https://github.com/openjournals/whedon}{Whedon} API that helps with automating
 most of the editorial tasks for \href{http://joss.theoj.org/}{JOSS} and
 \href{http://jose.theoj.org/}{JOSE}. This will most probably require some
 tweaking because our publishing pipeline is a bit different.
@@ -67,17 +67,17 @@ tweaking because our publishing pipeline is a bit different.
 \subsubsection{A new design}
 
 The combination of markdown and pandoc has also severely limited the layout and
-style possibilities for the article template and since we're switching to
+style possibilities for the article template and since we are switching to
 \LaTeX, this is the opportunity to propose a new design based on a more elegant
 style, using a new font stack\supercite{SourceSerifPro:2014, Roboto:2011,
-  SourceCodePro:2012} (you're currently readint it). The goal is to have a
+  SourceCodePro:2012} (you are currently reading it). The goal is to have a
 subtle but strong identity with enhanced readability. Considering that articles
 will be mostly read on screen (as opposed to printed), we can benefit from a
 more ethereal style. Once this design will have stabilized, an
 \href{https://www.overleaf.com/}{overleaf} template will be made available for
-those without a \TeX~installation. If a \TeX~expert is ready to help reviewing
-the template (and possibly rewrite it as a class), his/her help would be much
-welcome and appreciated. Same holds true for Open Office, Word or Pages, any
+those without a \TeX~installation. If a \TeX~expert is ready to help review
+the template (and possibly rewrite it as a class), their help would be much
+welcome and appreciated. The same holds for Open Office, Word or Pages, any
 template is welcome, just contact us beforehand such that we can coordinate
 efforts.
 
@@ -85,20 +85,20 @@ efforts.
 \subsubsection{Editorials, letters and special issues}
 
 ReScience C remains dedicated to the publication of computational replications
-but we (a.k.a. the editorial team) would like to have the opportunity to
+but we (i.e., the editorial team) would like to have the opportunity to
 publish \emph{editorials} when deemed necessary and to give anyone the
 opportunity to write \emph{letters} to the community on a specific topic
 related to reproducibility. Both editorials and letters are expected to be 1 or
-2 pages long (but no hard limit will be enforced), will be (fast) peer reviewed
+2 pages long (but no hard limit will be enforced), will be (quickly) peer reviewed
 and will be assigned a DOI. Furthermore, with the advent of reproducibility
 hackatons worldwide, we intend to offer the possibility of hosting {\em special
   issues} with guest editors (such as, for example, the organizers of a
-hackaton) in order to publish the results and enhanced their
+hackaton) in order to publish the results and enhance their
 discoverability. Each entry will have to go through the regular open
 peer-reviewed pipeline.\\
 
 
 We hope that most readers will agree on the proposed changes such that we can
-commit them by in the next few weeks. The review for this editorial is open (as
-usual) and anyone can comment and/or oppose any of the proposed changes. New
+commit to them in the next few weeks. The review for this editorial is open (as
+usual) and anyone can comment on and/or oppose any of the proposed changes. New
 ideas are also welcome.
