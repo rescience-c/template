@@ -8,31 +8,49 @@
 %%  * header.tex
 %%  * content.tex
 %% ----------------------------------------------------------------------------
-\documentclass[a4paper, oneside, 10pt]{article}
 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{rescience}[2019/03/05 Style for ReScience articles]
+
+\newif\ifisfinal
+
+\DeclareOption{final}{\isfinaltrue}
+\DeclareOption{draft}{\isfinalfalse}
+
+\ExecuteOptions{draft}
+
+\ProcessOptions\relax
+
+\ifisfinal
+\def \metadataFILE{metadata-final.tex}
+\else
+\def \metadataFILE{metadata-draft.tex}
+\fi
+
+\LoadClass[a4paper, oneside, 10pt]{article}
 
 % ---- Encoding ---------------------------------------------------------------
-% \usepackage[utf8]{inputenc}
+\RequirePackage[utf8]{inputenc}
 
 
 % --- Langage -----------------------------------------------------------------
-\usepackage[american]{babel}
+\RequirePackage[american]{babel}
 
 
 % --- Various packages --------------------------------------------------------
-\usepackage{ifthen}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usepackage{marginnote}
-\usepackage{csquotes}
+\RequirePackage{ifthen}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage{marginnote}
+\RequirePackage{csquotes}
 
 
 % --- Mathematics -------------------------------------------------------------
-\usepackage{amsmath}
-\usepackage{mathtools}
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}
 
 % --- Page layout -------------------------------------------------------------
-\usepackage[a4paper]{geometry}
+\RequirePackage[a4paper]{geometry}
 \geometry{left=4.5cm, right=3cm, top=3cm, bottom=3.5cm,
           heightrounded, headheight=12.1pt,
           marginparwidth=3cm, marginparsep=0.75cm, footskip=2cm}
@@ -42,15 +60,15 @@
 % --- Font stack --------------------------------------------------------------
 
 %% PDFLaTeX
-%% \usepackage[light,condensed]{roboto} % Sans Serif
-%% \usepackage[default,light,semibold,tabular]{sourceserifpro} % Roman
-%% \usepackage[varqu]{zi4} % Monotype
+%% \RequirePackage[light,condensed]{roboto} % Sans Serif
+%% \RequirePackage[default,light,semibold,tabular]{sourceserifpro} % Roman
+%% \RequirePackage[varqu]{zi4} % Monotype
 %% \makeatletter
 %% \def\bfseries@sf{sb}
 %% \makeatother
 
 % XeLaTeX
-\usepackage{fontspec}
+\RequirePackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
  \setmainfont{Source Serif Pro}[
   UprightFont=Source Serif Pro Light,
@@ -87,12 +105,11 @@
 ]  
 
 
-\usepackage{microtype}
-
+\RequirePackage{microtype}
 
 
 % --- Colors ------------------------------------------------------------------
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \definecolor{darkred}{HTML}{CF232B}
 \definecolor{darkblue}{HTML}{2B23CF}
 \definecolor{darkgray}{HTML}{555555}
@@ -103,7 +120,7 @@
 
 
 % -- Section titles & ToC -----------------------------------------------------
-\usepackage{titlesec}
+\RequirePackage{titlesec}
 %% \titleformat{\section}
 %%             {\Large\sffamily\bfseries}{\thesection}{0.25em}{}
 %% \titleformat{\subsection}
@@ -126,7 +143,7 @@
 
 
 % --- Captions ----------------------------------------------------------------
-\usepackage[labelsep=period]{caption}
+\RequirePackage[labelsep=period]{caption}
 \renewcommand{\captionfont}{\small}
 \renewcommand{\captionlabelfont}{\small\sffamily\bfseries}
 %% \captionsetup[figure]{justification=justified, singlelinecheck=false}
@@ -135,7 +152,7 @@
 
 
 % --- Hyperref & colors -------------------------------------------------------
-\usepackage[pdfusetitle,
+\RequirePackage[pdfusetitle,
             bookmarks=true,
             breaklinks=true,
             pdfborder={0 0 0},
@@ -148,11 +165,12 @@
             colorlinks=true,
             linktocpage=false,
             linkbordercolor=white]{hyperref}
+\hypersetup{linkcolor=black,urlcolor=darkgray}
 \urlstyle{sf}
 
 
 % --- Listings ----------------------------------------------------------------
-\usepackage{listings}
+\RequirePackage{listings}
 \lstset{%
   basicstyle=\ttfamily\small,
   keywordstyle=\color{black},
@@ -186,7 +204,7 @@
 \setlength\parindent{0pt}
 
 % No space between items in itemize and enuemrate lists
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 %\setlist[itemize]{noitemsep}
 %\setlist[enumerate]{noitemsep}
 
@@ -196,7 +214,7 @@
 
 
 % --- Authors block -----------------------------------------------------------
-\usepackage{authblk,etoolbox}
+\RequirePackage{authblk,etoolbox}
 \makeatletter
 % patch \maketitle so that it doesn't center
 \patchcmd{\@maketitle}{center}{flushleft}{}{}
@@ -220,7 +238,7 @@
 
 
 % --- Various convenient macros -----------------------------------------------
-\usepackage[many]{tcolorbox}
+\RequirePackage[many]{tcolorbox}
 \newtcbox{\iconbox}[1][]{%
   enhanced,nobeforeafter,tcbox raise base, 
   boxrule=0.4pt, top=0pt, bottom=-1pt,
@@ -257,7 +275,7 @@
 % --- Headers & footers -------------------------------------------------------
 \input{\metadataFILE}
 
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancypagestyle{plain}{}
 \renewcommand{\headrulewidth}{0.0pt}
@@ -283,7 +301,7 @@
 
 
 % --- Bibliography ------------------------------------------------------------
-\usepackage[
+\RequirePackage[
   backend=biber,
   style = numeric,
   % style=authoryear,
@@ -297,14 +315,14 @@
   doi = false,
   autocite = superscript,
   natbib = true]{biblatex}
-\usepackage{bibentry}
+\RequirePackage{bibentry}
 \DeclareFieldFormat{labelnumberwidth}{#1\adddot}
 \renewcommand*{\bibfont}{\small \sffamily}
 \addbibresource{\articleBIBLIOGRAPHY}
 
 
 % --- Copyright statement -----------------------------------------------------
-\usepackage{float}
+\RequirePackage{float}
 \floatstyle{plain}
 \newfloat{statement}{b!}{sst}
 
@@ -335,16 +353,4 @@
 }
 
 
-
 %% ============================================================================
-\begin{document}
-\input{header.tex}
-\input{content.tex}
-
-\hypersetup{linkcolor=black,urlcolor=darkgray}
-\renewcommand\emph[1]{{\bfseries #1}}
-\setlength\bibitemsep{0pt}
-\printbibliography
-
-\end{document}
-% =============================================================================
