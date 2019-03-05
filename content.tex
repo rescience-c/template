@@ -1,16 +1,17 @@
 
-Three years have passed since ReScience published its first
-article\supercite{Topalidou:2015} and since September 2015, things have been
-going steadily. We're still alive, independent and without a budget. In the
+Three years, we launched ReScience, a new scientific journal aimed at publishing the
+replication of existing computational research. Since ReScience published its first
+article\supercite{Topalidou:2015}, things have been
+going steadily. We are still alive, independent and without a budget. In the
 meantime, we have published around 24 articles (mostly in computational
 neuroscience \& computational ecology) and the initial
 \href{https://rescience-c.github.io/board/}{editorial board} has grown from
 around 10 to roughly 100 members (editors and reviewers), we have advertised
 ReScience at several conferences worldwide, gave some
-interviews\supercite{Science:2018} and we published an article introducing
-ReScience in PeerJ\supercite{Rougier:2017}. Based on our
+interviews\supercite{Science:2018}, and published an article introducing
+ReScience in PeerJ~CS\supercite{Rougier:2017}. Based on our
 experience\supercite{Rougier:2018} at managing the journal during these three
-years, we think the time is ripe for proposing some changes.
+years, we think that time is ripe for some changes.
 
 \subsubsection{ReScience C \& ReScience X}
 
@@ -32,22 +33,22 @@ The current submission process requires authors to fork, clone and branch the
 submission repository in order to write their article and to place code and
 data at the relevant places in the forked repository. Once done, authors have
 to push their changes and to make a pull request that is considered as a
-submission. This process is quite cumbersome for authors and has induced many
-troubles for editors as well once it is accepted and needs to be published,
-mostly because of the complexity of the editing procedure. In order to make
-life easier for everyone, the submission process has been greatly simplified
-and authors are now responsible for getting a DOI for their code \& data and
-have only to submit a PDF (as a new issue instead of making a pull request) and
-metadata. The subsequent editing process has been largely automatized using a
-set of dedicated Python scripts that should greatly simplify the
-publication. We will still archive the submission on Zenodo but this archive
-will be made for the final PDF only. However, both the PDF and the Zenodo entry
-will contain all associated DOIs (data and code).
+submission. This process is cumbersome for authors and has induced many
+troubles for editors as well once the article is accepted and ready to be
+published, mostly because of the complexity of the editing procedure. In order
+to make life easier for everyone, we greatly simplified the submission process
+for ReScience C and X. Authors are now responsible for getting a DOI for their
+code \& data and only have to submit a PDF and a metadata file in a GitHub
+issue.
+We also provide Python programs that largely automate the subsequent editing
+process. We will still archive the submission on Zenodo but this archive will
+be made for the final PDF only. However, both the PDF and the Zenodo entry will
+contain all associated DOIs (data and code).
 
 
 \subsubsection{A simplified publishing process}
 
-We have have been using a combination of
+In ReScience, we have have been using a combination of
 \href{https://daringfireball.net/projects/markdown/syntax}{markdown} and
 \href{http://pandoc.org/}{pandoc} for producing both the draft and the final
 version of all the published articles. This had worked reasonably well until it
@@ -89,13 +90,12 @@ but we (i.e., the editorial team) would like to have the opportunity to
 publish \emph{editorials} when deemed necessary and to give anyone the
 opportunity to write \emph{letters} to the community on a specific topic
 related to reproducibility. Both editorials and letters are expected to be 1 or
-2 pages long (but no hard limit will be enforced), will be (quickly) peer reviewed
+2 pages long (but no hard limit will be enforced), will be (quickly) peer reviewed,
 and will be assigned a DOI. Furthermore, with the advent of reproducibility
-hackatons worldwide, we intend to offer the possibility of hosting {\em special
-  issues} with guest editors (such as, for example, the organizers of a
-hackaton) in order to publish the results and enhance their
-discoverability. Each entry will have to go through the regular open
-peer-reviewed pipeline.\\
+hackatons worldwide, we will host {\em special issues} with guest editors (such
+as, for example, the organizers of a hackaton) in order to publish the results
+and to enhance their discoverability. Each entry will have to go through the
+regular open peer-reviewed pipeline.\\
 
 
 We hope that most readers will agree on the proposed changes such that we can
