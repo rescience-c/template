@@ -9,6 +9,8 @@ PDF style. For the fonts, you'll need:
 * [The Roboto family of fonts (Google)](https://github.com/google/roboto) by C. Robertson.
 * [Source Code Pro (Adobe Systems)](https://github.com/adobe-fonts/source-code-pro) by P.D. Hunt.
 
+The fonts are available for [download from Google Fonts](https://fonts.google.com/selection?selection.family=Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab|Source+Code+Pro|Source+Serif+Pro&query=source+code+pro).
+
 A tool is available for the latex template that produces latex definitions from
 the metadata file. If you use another software, make sure that metadata and PDF
 are always synced.
