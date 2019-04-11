@@ -50,7 +50,8 @@ def generate_latex_metadata(filename, article):
 
     for author in article.authors:
         affiliations = ",".join(author.affiliations)
-        affiliations += ",\\orcid{%s}" % author.orcid
+        if len(author.orcid) > 0:
+            affiliations += ",\\orcid{%s}" % author.orcid
         content += "\\author[%s]{%s}\n" % (affiliations, author.name)
 
     for a in article.affiliations:
