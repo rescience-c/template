@@ -11,9 +11,9 @@ PDF style. For the fonts, you'll need:
 
 The fonts are available for [download from Google Fonts](https://fonts.google.com/selection?selection.family=Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab|Source+Code+Pro|Source+Serif+Pro&query=source+code+pro).
 
-A tool is available for the latex template that produces latex definitions from
-the metadata file. If you use another software, make sure that metadata and PDF
-are always synced.
+This repository includes a tool that produces latex definitions from the metadata
+file. It requires [Python 3](https://www.python.org/) and [PyYAML](https://pyyaml.org/).
+If you use another software, make sure that metadata and PDF are always synced.
 
 
 #### Usage
